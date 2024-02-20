@@ -14,7 +14,7 @@ export const TaskTable = ({ clName }: Props) => {
           <th scope="col">№</th>
           <th scope="col">Задача</th>
           <th scope="col">Статус</th>
-          <th scope="col">Действия</th>
+          <th colSpan={2} scope="col">Действия</th>          
         </tr>
       </thead>
       <tbody>
