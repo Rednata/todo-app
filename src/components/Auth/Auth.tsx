@@ -1,10 +1,8 @@
 import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
-import { authAction } from "../../store/Auth/AuthAction";
+import {authReducer} from '../../store/Auth/AuthSlice';
 
-type Props = {
-
-}
+type Props = {}
 
 export const Auth = () => {
   console.log();
@@ -14,7 +12,8 @@ export const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    dispatch(authAction(auth))
+    dispatch(authReducer.actions.inputAuth(auth))
+    
 
   };
 
