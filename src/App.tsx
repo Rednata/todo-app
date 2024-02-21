@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import { Button } from './components/Button/Button';
 import { Form } from './components/Form/Form';
 import { TaskTable } from './components/TaskTable/TaskTable';
 import { Auth } from './components/Auth/Auth';
@@ -9,7 +8,7 @@ import { useAppSelector } from './hooks';
 
 function App() {
   const auth = useAppSelector(state => state.auth.authName);
-  
+
   console.log('auth: ', auth);
   return (
     <div className="App">
@@ -21,8 +20,7 @@ function App() {
         <>
           <div className="my-container">
             <Form />
-            {/* <Button clName='btn btn-success' text='Сохранить' />
-            <Button clName='btn btn-warning' text='Очистить' />            */}
+          
           </div>
           <TaskTable clName='list-group'/>
         </>

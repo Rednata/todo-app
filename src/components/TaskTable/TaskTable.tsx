@@ -23,14 +23,11 @@ export const TaskTable = ({ clName }: Props) => {
       </thead>
       <tbody>
         {!!tasksList.length && (
-          tasksList.map( item => (
-          <Task text={item.value} key={item.id} id={item.id} />))
+          tasksList.map( (item, ind) => (
+          <Task text={item.value} key={item.id} id={item.id} ind={ind + 1}/>))
         )}
       </tbody>
     </table>
 
   )
 }
-
-{/* <Task text='Купить слона'/>
-<Task text='Помыть кота'/> */}

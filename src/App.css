@@ -8,11 +8,5 @@
 }
 
 .my-container {
-  display: flex;
-  gap: 10px;
   margin-bottom: 20px;
-
-  @media(max-width: 550px) {
-    flex-wrap: wrap;
-  }
 }

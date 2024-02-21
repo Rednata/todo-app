@@ -4,6 +4,7 @@ interface ITasks {
   tasks: {
     value: string;
     id: string;
+    isFinish: boolean;
   }[];
 }
 
@@ -21,7 +22,11 @@ export const tasksReducer = createSlice({
     },
     deleteTask: (state, action) => {
       state.tasks = action.payload;
-    }
+    },
+    finishTask: (state, action) => {
+      console.log('action: ', action);
+      // state.tasks = action.payload;
+    },
   }
   
 });

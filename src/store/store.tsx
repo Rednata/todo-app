@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import authReducer from './Auth/AuthSlice';
 import tasksReducer from './Tasks/TaskSlice';
-// import { authMiddleware } from "./Auth/AuthAction";
+// import { storageMiddleware } from "../storage/controlStorage";
 
 
 const rootReducer = combineReducers({
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
   // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware().concat(authMiddleware)
+  //   getDefaultMiddleware().concat(storageMiddleware)
 })
 
 export type AppStore = typeof store;

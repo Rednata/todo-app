@@ -1,2 +1,6 @@
-export const temp = 0;
+export const temp = 2;
+// export const storageMiddleware = store => next => action => {
+//   console.log('storageMiddleware');
+  
+// }
 
