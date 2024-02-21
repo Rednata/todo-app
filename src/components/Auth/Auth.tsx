@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { actions } from "../../store/Auth/AuthSlice";
+import style from './Auth.module.scss';
 
 type Props = {}
 
@@ -25,7 +26,11 @@ export const Auth = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" placeholder="Введите имя"  onChange={handleChange}/>
+      <input
+        className={style.authInput}
+        type="text"
+        placeholder="Введите имя"
+        onChange={handleChange}/>
     </form>
   )
 }

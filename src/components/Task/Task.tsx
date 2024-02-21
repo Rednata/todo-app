@@ -18,8 +18,13 @@ export const Task = ({text, id, ind}: Props) => {
   const [isFinish, setIsFinish] = useState(false);  
 
   const handleClickDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {    
-    const newTask = tasksList.filter(item => item.id !== id)
-    dispatch(tasksReducer.actions.deleteTask(newTask));        
+    const confirmDel = window.confirm('Вы точно хотите удалить задачу?')
+
+    if (confirmDel) {
+      const newTask = tasksList.filter(item => item.id !== id)
+      dispatch(tasksReducer.actions.deleteTask(newTask));        
+    }
+    
   }
 
   const handleClickFinish = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
@@ -29,8 +34,18 @@ export const Task = ({text, id, ind}: Props) => {
   return (
     <tr>
       <th scope="row">{ind}</th>
-      {isFinish ? (<td className={style.td_through}>{text}</td>) : (<td>{text}</td>)}      
-      <td>В процессе</td>
+      {isFinish ? (
+        <>
+          <td className={style.td_through}>{text}</td>
+          <td>Выполнена</td>
+        </>        
+        ) : (
+          <> 
+            <td>{text}</td>
+            <td>В процессе</td>
+          </>        
+        )}      
+      
       <td>
         <Button
           clName='btn btn-danger'
