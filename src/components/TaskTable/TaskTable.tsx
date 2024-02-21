@@ -1,3 +1,4 @@
+import { useAppSelector } from '../../hooks';
 import { Task } from '../Task/Task';
 import style from './TaskList.module.scss';
 
@@ -6,8 +7,11 @@ type Props = {
 }
 
 export const TaskTable = ({ clName }: Props) => {
-  console.log(clName);
-  return (
+  const tasksList = useAppSelector(state => state.tasks.tasks);
+  console.log('tasksList: ', tasksList);
+
+    
+  return (    
     <table className="table table-bordered">
       <thead>
         <tr>
@@ -18,11 +22,15 @@ export const TaskTable = ({ clName }: Props) => {
         </tr>
       </thead>
       <tbody>
-        <Task text='Купить слона'/>
-        <Task text='Помыть кота'/>
-
+        {!!tasksList.length && (
+          tasksList.map( item => (
+          <Task text={item.value} key={item.id} id={item.id} />))
+        )}
       </tbody>
     </table>
 
   )
 }
+
+{/* <Task text='Купить слона'/>
+<Task text='Помыть кота'/> */}
