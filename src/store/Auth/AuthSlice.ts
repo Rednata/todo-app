@@ -9,7 +9,7 @@ const initialState: IAuth = {
   authName: ''
 }
 
-export const authReducer = createSlice({
+const authReducer = createSlice({
   name: 'auth',
   initialState,
   reducers: {    
@@ -22,6 +22,7 @@ export const authReducer = createSlice({
 })
 
 export default authReducer.reducer;
+export const { actions } = authReducer;
 
 
 

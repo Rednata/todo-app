@@ -13,3 +13,6 @@ export const store = configureStore({
   // middleware: (getDefaultMiddleware) =>
   //   getDefaultMiddleware().concat(authMiddleware)
 })
+
+export type AppStore = typeof store;
+export type RootState = ReturnType<typeof rootReducer>;

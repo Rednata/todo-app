@@ -1,20 +1,22 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {authReducer} from '../../store/Auth/AuthSlice';
+import { actions } from "../../store/Auth/AuthSlice";
 
 type Props = {}
 
 export const Auth = () => {
-  console.log();
-  const [auth, setAuth] = useState('');
-
+  const [value, setAuth] = useState('');
+  
   const dispatch = useDispatch();
+  let user: string | null = null;
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
-    dispatch(authReducer.actions.inputAuth(auth))
-    
 
+    user = localStorage.getItem(value);    
+    console.log('user:: ', user);
+    dispatch(actions.inputAuth(value))
+    
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

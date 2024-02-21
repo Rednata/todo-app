@@ -5,7 +5,6 @@ type Props = {
 }
 
 export const Button = ({clName, text}: Props) => {
-  console.log(clName);
   return (
     <button className={clName}>{text}</button>
   )
