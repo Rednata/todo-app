@@ -57,7 +57,7 @@ export const Form = () => {
         text='Очистить'
         func={handleClickClear}
         type='button'
-      />           
+      />                   
     </form>
   )
 }

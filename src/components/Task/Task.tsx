@@ -19,20 +19,23 @@ export const Task = ({text, id, ind}: Props) => {
 
   const handleClickDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {    
     const confirmDel = window.confirm('Вы точно хотите удалить задачу?')
-
     if (confirmDel) {
       const newTask = tasksList.filter(item => item.id !== id)
       dispatch(tasksReducer.actions.deleteTask(newTask));        
-    }
-    
+    }    
   }
 
   const handleClickFinish = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     setIsFinish(!isFinish);
     // dispatch(tasksReducer.actions.finishTask({id, isFinish: !isFinish}));
   }
+
+  const handleClickEdit = () => {
+    console.log('edit');
+    
+  }
   return (
-    <tr>
+    <tr >
       <th scope="row">{ind}</th>
       {isFinish ? (
         <>
@@ -41,37 +44,32 @@ export const Task = ({text, id, ind}: Props) => {
         </>        
         ) : (
           <> 
-            <td>{text}</td>
+            <td className={style.task}>{text}</td>
             <td>В процессе</td>
           </>        
         )}      
       
-      <td>
+      <td className={style.actionBtnWrap}>
         <Button
           clName='btn btn-danger'
           text='Удалить'
           type='button'
           func={handleClickDelete}/>      
-      </td>
-      <td>
+
         <Button
           clName='btn btn-primary'
           text='Завершить'
           type='button'
           func={handleClickFinish}/>
+
+        <Button
+          clName='btn btn-secondary'
+          text='Редактировать'
+          func={handleClickEdit}
+          type='button'
+        />   
       </td>
     </tr>
     
   )
 }
-
-// type Props1 = {
-//     text1: string;
-//     key1: string
-// }
-// export const Task1 = (props: Props1) => {
-//   console.log('props: ', props);
-//   return (
-//     <p>RRRRRRR</p>
-//   )
-// }
