@@ -25,7 +25,7 @@ export const Task = ({text, id, ind, finish}: Props) => {
     const confirmDel = window.confirm('Вы точно хотите удалить задачу?')
     if (confirmDel) {
       const newTaskList = tasksList.filter(item => item.id !== id)      
-      dispatch(tasksReducer.actions.deleteTask(newTaskList));              
+      dispatch(tasksReducer.actions.updateTask(newTaskList));              
     }    
   }
 
@@ -41,7 +41,7 @@ export const Task = ({text, id, ind, finish}: Props) => {
       }
         return item
     })
-    dispatch(tasksReducer.actions.finishTask(newTaskList));
+    dispatch(tasksReducer.actions.updateTask(newTaskList));
   }
 
   const handleSubmit1 = (e: React.FormEvent<EventTarget>) => {

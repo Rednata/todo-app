@@ -1,21 +1,21 @@
 import style from './Form.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { tasksReducer } from '../../store/Tasks/TaskSlice';
 import { useDispatch } from 'react-redux';
 import { Button } from '../Button/Button';
 
 export const Form = () => {
-
-  const createID = () => Math.random().toString(16).slice(2,8);
-
   const [value, setValue] = useState('');
   const [disabled, setDisabled] = useState(true);
-
   const dispatch = useDispatch();
-  
-  const makeDisabledButton = () => {
-    setDisabled(true);
-  };
+  const inputRef = useRef<(HTMLInputElement)>(null);
+
+  useEffect(() => {        
+      inputRef.current?.focus();    
+  }, []);
+
+  const createID = () => Math.random().toString(16).slice(2,8);
+  const makeDisabledButton = () => setDisabled(true);
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {    
     e.preventDefault();
@@ -45,6 +45,7 @@ export const Form = () => {
         className={style.input}
         placeholder='Введите задачу'
         value={value}
+        ref={inputRef}
         onChange={handleChangeInput}        
       />            
       <Button

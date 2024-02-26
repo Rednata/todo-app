@@ -5,13 +5,8 @@ export const storageMiddleware = (store: any) => (next: any) => (action: any) =>
   if (action.type === 'auth/inputAuth') {    
     localStorage.setItem(action.payload, '');
   }  
-
-  // if (action.type === 'auth/updateAuth') {    
-  //   localStorage.setItem(action.payload, '');
-  // }  
   
   if (action.type === 'tasks/inputTask') {                
-
     const currentLSObject = localStorage.getItem(user) || '';        
     if (currentLSObject === '') {      
       const currentTaskList = [];
@@ -24,11 +19,7 @@ export const storageMiddleware = (store: any) => (next: any) => (action: any) =>
     }
   }  
 
-  if (action.type === 'tasks/deleteTask') {
-    localStorage.setItem(user, JSON.stringify(action.payload));
-  }
-
-  if (action.type === 'tasks/finishTask') {
+  if (action.type === 'tasks/updateTask') {
     localStorage.setItem(user, JSON.stringify(action.payload));
   }
 
