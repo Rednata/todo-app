@@ -1,13 +1,9 @@
 import { useAppSelector } from '../../hooks';
 import { Task } from '../Task/Task';
 
-type Props = {  
-  clName: string;  
-}
-
-export const TaskTable = ({ clName }: Props) => {
+export const TaskTable = () => {
   const tasksList = useAppSelector(state => state.tasks.tasks);
-    
+
   return (        
       <table className="table table-bordered">
         <thead>
@@ -20,7 +16,7 @@ export const TaskTable = ({ clName }: Props) => {
         </thead>
         <tbody>
           {!!tasksList.length && (
-            tasksList.map( (item, ind) => (
+            tasksList.map((item, ind) => (
             <Task
               text={item.value}
               finish={item.finish}

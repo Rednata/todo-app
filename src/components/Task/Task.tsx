@@ -13,13 +13,11 @@ type Props = {
 }
 
 export const Task = ({text, id, ind, finish}: Props) => {
-  const tasksList = useAppSelector(state => state.tasks.tasks);
   const dispatch = useDispatch();
-
+  const tasksList = useAppSelector(state => state.tasks.tasks);
   const [editValue, setEditValue] = useState(text);
-  const textInputRef = useRef<(HTMLInputElement)>(null);
-
-  const [isFinish, setIsFinish] = useState(finish);  
+  const [isFinish, setIsFinish] = useState(finish);
+  const textInputRef = useRef<(HTMLInputElement)>(null);  
 
   const handleClickDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {    
     const confirmDel = window.confirm('Вы точно хотите удалить задачу?')
@@ -30,11 +28,7 @@ export const Task = ({text, id, ind, finish}: Props) => {
   }
 
   const handleClickFinish = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-    
-    setIsFinish(!isFinish);
-    console.log(isFinish);
-    
-        
+    setIsFinish(!isFinish);        
     const newTaskList = tasksList.map(item => {
       if (item.id === id) {
         item = {...item, finish: !isFinish}
@@ -44,66 +38,54 @@ export const Task = ({text, id, ind, finish}: Props) => {
     dispatch(tasksReducer.actions.updateTask(newTaskList));
   }
 
-  const handleSubmit1 = (e: React.FormEvent<EventTarget>) => {
+  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();  
+    const newTaskList = tasksList.map(item => {
+      if (item.id === id) {
+        item = {...item, value: editValue}
+      }
+      return item;
+    })      
+    dispatch(tasksReducer.actions.updateTask(newTaskList));
+    textInputRef.current?.blur()
   }
 
   const handleClickEdit = () => {
-    console.log('edit');
     textInputRef.current?.focus();
-
-    // if (textInputRef instanceof HTMLElement) {
-    //   console.log(typeof textInputRef);
-    // }    
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {    
-    // setEditValue(e.target.value)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {            
+    setEditValue(e.target.value)
     // console.log(editValue);
   }
 
   return (
     <tr className={style.tr_form}>
       <th scope="row">{ind}</th>
-      {(finish )? (
-        <>
-          <td >
-            <form action=""
-              onSubmit={handleSubmit1}
-            >
+      <td>
+        <form onSubmit={handleSubmit}>
+          {
+            finish ? (
+              <input
+                className={style.td_through}                               
+                type="text"
+                value={editValue}
+                ref={textInputRef}     
+                onChange={handleChange}
+              />
+              ) : ( 
                 <input
-                  className={style.td_through}                               
+                  className={style.td_input}                               
                   type="text"
                   value={editValue}
                   ref={textInputRef}     
                   onChange={handleChange}
                 />
-              </form>
-            {/* {text} */}
-          </td>
-          <td>Выполнена</td>
-        </>        
-        ) : (
-          <> 
-            <td
-              className={style.task}                            
-            >
-              <form action="">
-                <input
-                  className={style.td_input}   
-                  type="text"
-                  value={editValue}
-                  ref={textInputRef}     
-                  onChange={handleChange}
-                />
-              </form>
-
-              {/* {text} */}
-            </td>
-            <td>В процессе</td>
-          </>        
-        )}      
-      
+              )
+          }
+        </form>
+      </td>
+      <td>В процессе</td>
       <td className={style.actionBtnWrap}>
         <Button
           clName='btn btn-danger'
@@ -124,7 +106,6 @@ export const Task = ({text, id, ind, finish}: Props) => {
           type='button'
         />   
       </td>
-    </tr>
-    
+    </tr>    
   )
 }

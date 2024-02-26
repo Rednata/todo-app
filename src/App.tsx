@@ -18,7 +18,7 @@ function App() {
           <div className="my-container">
             <Form />          
           </div>
-          <TaskTable clName='list-group'/>
+          <TaskTable />
         </>
         
       )

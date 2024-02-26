@@ -26,10 +26,9 @@ export const tasksReducer = createSlice({
     },
     updateTask: (state, action: PayloadAction<ITask[]>) => {            
       state.tasks = action.payload;      
-    },
+    },    
     fillingTasks: (state, action) => {      
       state.tasks = action.payload 
-
     }
   }
   
