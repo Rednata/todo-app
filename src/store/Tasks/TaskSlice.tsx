@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface ITasks {
   tasks: {
     value: string;
     id: string;
-    isFinish: boolean;
+    finish: boolean;
   }[];
 }
 
@@ -16,17 +16,19 @@ export const tasksReducer = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
-    inputTask: (state, action) => {
-      console.log('action: ', action);
+    inputTask: (state, action) => {      
       state.tasks.push(action.payload);
     },
-    deleteTask: (state, action) => {
+    deleteTask: (state, action) => {      
+      state.tasks = action.payload;      
+    },
+    finishTask: (state, action) => {      
       state.tasks = action.payload;
     },
-    finishTask: (state, action) => {
-      console.log('action: ', action);
-      // state.tasks = action.payload;
-    },
+    fillingTasks: (state, action) => {      
+      state.tasks = action.payload 
+
+    }
   }
   
 });

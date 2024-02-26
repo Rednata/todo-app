@@ -13,8 +13,10 @@ const authReducer = createSlice({
   name: 'auth',
   initialState,
   reducers: {    
-    inputAuth: (state, action) => {
-      localStorage.setItem(action.payload, '');
+    inputAuth: (state, action) => {      
+      state.authName = action.payload
+    },
+    updateAuth: (state, action) => {      
       state.authName = action.payload
     }
   }

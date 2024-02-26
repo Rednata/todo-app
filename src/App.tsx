@@ -9,7 +9,6 @@ import { useAppSelector } from './hooks';
 function App() {
   const auth = useAppSelector(state => state.auth.authName);
 
-  console.log('auth: ', auth);
   return (
     <div className="App">
       {/* <Task1 text1='rrrrrrr' key1='897'/> */}

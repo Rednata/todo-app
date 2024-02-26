@@ -3,6 +3,18 @@
   gap: 5px; 
 }
 
+.td_input {
+  border: 1px solid transparent;
+  vertical-align: middle;
+  // outline: 1px solid red;
+
+  &:active {
+    // border: 1px solid red;
+  }
+}
+
 .td_through {
+  border: 1px solid transparent;
   text-decoration: line-through;
+  vertical-align: middle;
 }

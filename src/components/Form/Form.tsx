@@ -20,8 +20,9 @@ export const Form = () => {
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {    
     e.preventDefault();
     const id = createID();
+    const finish = false;
     if (value.length) {
-      dispatch(tasksReducer.actions.inputTask({value, id}));    
+      dispatch(tasksReducer.actions.inputTask({value, id, finish}));    
       setValue('');         
     } 
       makeDisabledButton();
