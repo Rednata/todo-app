@@ -5,6 +5,7 @@ interface IListTasks {
     value: string;
     id: string;
     finish: boolean;
+    importance: string;
   }[];
 }
 
@@ -12,6 +13,7 @@ interface ITask {
   value: string;
   id: string;
   finish: boolean;
+  importance: string;
 }
 const initialState: IListTasks = {
   tasks: [],

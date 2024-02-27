@@ -12,5 +12,20 @@
   height: 38px;
   border-radius: 6px;
   border: 1px solid rgb(175, 163, 163);
-  padding-left: 5px;
+  padding-left: 5px;  
+
+  &:focus-visible {
+    outline: 1px solid rgb(76, 126, 190)
+  }
 }
+
+.select {
+  border-radius: 6px;
+  border: 1px solid rgb(175, 163, 163);
+  
+  &:focus-visible {
+    outline: 1px solid rgb(76, 126, 190)
+  }
+}
+
+// #198754

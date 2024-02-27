@@ -7,6 +7,7 @@ import { Button } from '../Button/Button';
 export const Form = () => {
   const [value, setValue] = useState('');
   const [disabled, setDisabled] = useState(true);
+  const [importance, setImportance] = useState('regular');
   const dispatch = useDispatch();
   const inputRef = useRef<(HTMLInputElement)>(null);
 
@@ -22,7 +23,7 @@ export const Form = () => {
     const id = createID();
     const finish = false;
     if (value.length) {
-      dispatch(tasksReducer.actions.inputTask({value, id, finish}));    
+      dispatch(tasksReducer.actions.inputTask({value, id, finish, importance}));    
       setValue('');         
     } 
       makeDisabledButton();
@@ -37,6 +38,10 @@ export const Form = () => {
     setValue('');
     makeDisabledButton();    
   }
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {        
+    setImportance(e.target.value)    
+  }
   
   return (
     <form className={style.form} onSubmit={handleSubmit}>
@@ -48,6 +53,16 @@ export const Form = () => {
         ref={inputRef}
         onChange={handleChangeInput}        
       />            
+      <select
+         className={style.select}        
+         id=""
+         onChange={handleSelectChange}
+         disabled={disabled}
+      >
+        <option value="regular">обычная</option>
+        <option value="important">важная</option>
+        <option value="urgent">срочная</option>
+      </select>
       <Button
         clName='btn btn-success'
         text='Сохранить'

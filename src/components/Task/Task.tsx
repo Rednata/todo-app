@@ -10,9 +10,10 @@ type Props = {
   id: string; 
   ind: number;
   finish: boolean;
+  importance: string;
 }
 
-export const Task = ({text, id, ind, finish}: Props) => {
+export const Task = ({text, id, ind, finish, importance}: Props) => {
   const dispatch = useDispatch();
   const tasksList = useAppSelector(state => state.tasks.tasks);
   const [editValue, setEditValue] = useState(text);
@@ -60,27 +61,33 @@ export const Task = ({text, id, ind, finish}: Props) => {
   }
 
   return (
-    <tr className={style.tr_form}>
-      <th scope="row">{ind}</th>
-      <td>
-        <form onSubmit={handleSubmit}>
+    <tr >
+      <th scope="row">{ind}</th>                              
+      <td className={style.tr_form}>
+        <form className={style.form} onSubmit={handleSubmit}>
           {
             finish ? (
+              <>
               <input
-                className={style.td_through}                               
+                className={`${style.td_through}`}                               
                 type="text"
                 value={editValue}
                 ref={textInputRef}     
                 onChange={handleChange}
               />
+              <span className={style[importance]}></span>
+              </>              
               ) : ( 
-                <input
+                <> 
+                <input                  
                   className={style.td_input}                               
                   type="text"
                   value={editValue}
                   ref={textInputRef}     
                   onChange={handleChange}
                 />
+                <span className={style[importance]}></span>
+                </>                
               )
           }
         </form>

@@ -20,6 +20,7 @@ export const TaskTable = () => {
             <Task
               text={item.value}
               finish={item.finish}
+              importance={item.importance}
               id={item.id}
               ind={ind + 1}
               key={item.id}
