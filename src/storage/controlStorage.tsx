@@ -25,8 +25,7 @@ export const storageMiddleware = (store: any) => (next: any) => (action: any) =>
 
   if (action.type === 'tasks/fillingTasks') {
     const currentLSObject = localStorage.getItem(user) || '';        
-    if (currentLSObject) {      
-      
+    if (currentLSObject) {            
       action.payload = JSON.parse(currentLSObject);      
     }
   }

@@ -75,7 +75,7 @@ export const Task = ({text, id, ind, finish, importance}: Props) => {
                 ref={textInputRef}     
                 onChange={handleChange}
               />
-              <span className={style[importance]}></span>
+              <span className={`${style.block} ${style[importance]}`}></span>
               </>              
               ) : ( 
                 <> 
@@ -86,7 +86,7 @@ export const Task = ({text, id, ind, finish, importance}: Props) => {
                   ref={textInputRef}     
                   onChange={handleChange}
                 />
-                <span className={style[importance]}></span>
+                <span className={`${style.block} ${style[importance]}`}></span>
                 </>                
               )
           }
@@ -95,19 +95,19 @@ export const Task = ({text, id, ind, finish, importance}: Props) => {
       <td>В процессе</td>
       <td className={style.actionBtnWrap}>
         <Button
-          clName='btn btn-danger'
+          clName='btn btn-danger btn-sm'
           text='Удалить'
           type='button'
           func={handleClickDelete}/>      
 
         <Button
-          clName='btn btn-primary'
+          clName='btn btn-primary btn-sm'
           text='Завершить'
           type='button'
           func={handleClickFinish}/>
 
         <Button
-          clName='btn btn-secondary'
+          clName='btn btn-secondary btn-sm'
           text='Редактировать'
           func={handleClickEdit}
           type='button'

@@ -70,7 +70,7 @@ export const Form = () => {
         disabled={disabled}        
         />
       <Button
-        clName='btn btn-warning'
+        clName='btn btn-warning '
         text='Очистить'
         func={handleClickClear}
         type='button'

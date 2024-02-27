@@ -5,7 +5,8 @@ export const TaskTable = () => {
   const tasksList = useAppSelector(state => state.tasks.tasks);
 
   return (        
-      <table className="table table-bordered">
+    <div className="table-responsive">
+      <table className="table table-bordered table-hover">
         <thead>
           <tr>
             <th scope="col">№</th>
@@ -28,5 +29,7 @@ export const TaskTable = () => {
           )}
         </tbody>
       </table>        
+    </div>
+      
   )
 }

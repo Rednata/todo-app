@@ -19,12 +19,10 @@ function App() {
             <Form />          
           </div>
           <TaskTable />
-        </>
-        
-      )
-        
-      }
-      </div>
+        </>        
+      )        
+    }
+    </div>
   );
 }
 
